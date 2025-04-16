@@ -114,7 +114,7 @@ int IntList::count() const {
 //to this list, deleting/replacing any existing nodes
 IntList& IntList::operator=(const IntList& source){
     if (this != &source) {
-        //Delete existing nodes
+        //Delete all existing nodes 
         Node* current = head;
         while(current) {
             Node* nextNode = current->next; 
@@ -124,7 +124,7 @@ IntList& IntList::operator=(const IntList& source){
         }
         head = tail = nullptr;
 
-        // Deep Copy 
+        // Deep Copy instead of Shallow Copy to prevent memory leak 
         Node* src = source.head; 
         while(src) {
             push_back(src->info);
